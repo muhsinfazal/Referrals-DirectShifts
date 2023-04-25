@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Form, Formik } from "formik";
 import { toast } from "material-react-toastify";
-import { Button, TextField, Box, Typography } from "@mui/material/Button";
+import { Button, TextField, Box, Typography } from "@mui/material";
 
 import NavBar from "common/NavBar";
 import UserContext from "contexts/UserContext";

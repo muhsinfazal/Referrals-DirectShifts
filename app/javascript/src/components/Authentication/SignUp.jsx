@@ -14,7 +14,6 @@ import {
   Typography,
   Container
 } from "@mui/material";
-import FormControlLabel from "@mui/material/FormControlLabel";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 
 import CopyRight from "common/CopyRight";
