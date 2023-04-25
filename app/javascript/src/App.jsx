@@ -1,16 +1,19 @@
-import React, { useEffect, useState, createContext } from "react";
+import React, { useEffect, useState } from "react";
 import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
-import { setAuthHeaders } from "apis/axios";
-import { initializeLogger } from "common/logger";
-import SignUp from "components/Authentication/SignUp";
-import SignIn from "components/Authentication/SignIn";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-import UserContext from "./contexts/UserContext";
-import { Box, CircularProgress } from "@mui/material";
-import Home from "components/Home";
-import Refer from "components/Refer";
+
 import { ToastContainer } from "material-react-toastify";
 import "material-react-toastify/dist/ReactToastify.css";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { Box, CircularProgress } from "@mui/material";
+
+import SignUp from "components/Authentication/SignUp";
+import SignIn from "components/Authentication/SignIn";
+import Home from "components/Home";
+import Refer from "components/Refer";
+
+import UserContext from "./contexts/UserContext";
+import { initializeLogger } from "common/logger";
+import { setAuthHeaders } from "apis/axios";
 
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";

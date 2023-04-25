@@ -1,17 +1,11 @@
 import React, { useContext } from "react";
-import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
-
-import Box from "@mui/material/Box";
-
-import Typography from "@mui/material/Typography";
+import { Form, Formik } from "formik";
+import { toast } from "material-react-toastify";
+import { Button, TextField, Box, Typography } from "@mui/material/Button";
 
 import NavBar from "common/NavBar";
-import referralsApi from "apis/referrals";
 import UserContext from "contexts/UserContext";
-
-import { toast } from "material-react-toastify";
-import { Form, Formik } from "formik";
+import referralsApi from "apis/referrals";
 import { emailValidationShema } from "./validations";
 
 const Refer = () => {
@@ -28,7 +22,6 @@ const Refer = () => {
       logger.log(err);
       toast.error("Referral failed!", { theme: "colored" });
     }
-    return;
   };
 
   return (

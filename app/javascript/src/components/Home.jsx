@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import NavBar from "common/NavBar";
 import {
   Box,
   Container,
@@ -12,16 +11,15 @@ import {
   TableRow,
   Typography
 } from "@mui/material";
-import referralsApi from "apis/referrals";
+
+import NavBar from "common/NavBar";
 import UserContext from "contexts/UserContext";
+import referralsApi from "apis/referrals";
+import { getUtcTime } from "./utils";
 
 const Home = () => {
   const currentUser = useContext(UserContext);
   const [tableData, setTableData] = useState([]);
-
-  const dayjs = require("dayjs");
-  const utc = require("dayjs/plugin/utc");
-  dayjs.extend(utc);
 
   const fetchReferrals = async () => {
     try {
@@ -35,8 +33,6 @@ const Home = () => {
   useEffect(() => {
     fetchReferrals();
   }, []);
-
-  const getUtcTime = (time) => dayjs.utc(time).format("hh:mm:ss A, DD-MM-YYYY");
 
   return (
     <>

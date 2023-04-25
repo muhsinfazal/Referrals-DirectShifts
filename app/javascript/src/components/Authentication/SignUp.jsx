@@ -1,21 +1,26 @@
 import React, { useState } from "react";
-import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
+import { useHistory, useLocation } from "react-router-dom";
+
+import {
+  Alert,
+  Avatar,
+  Button,
+  TextField,
+  FormControlLabel,
+  Checkbox,
+  Link,
+  Grid,
+  Box,
+  Typography,
+  Container
+} from "@mui/material";
 import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
-import Link from "@mui/material/Link";
-import Grid from "@mui/material/Grid";
-import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
+
 import CopyRight from "common/CopyRight";
 import NavBar from "common/NavBar";
-import { useHistory, useLocation } from "react-router-dom";
 import deviseApi from "apis/devise";
 import referralsApi from "apis/referrals";
-import { Alert } from "@mui/material";
 
 const SignUp = () => {
   const [formErrors, setFormErrors] = useState();
