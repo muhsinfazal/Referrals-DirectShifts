@@ -1,24 +1,13 @@
-# README
+# Referrals - DirectShifts Take Home Assignment
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Setup
 
-Things you may want to cover:
+Run `bin/setup` to setup the project.
 
-* Ruby version
+## Start the servers
 
-* System dependencies
+Run `bin/dev` to start the Rails server and Webpacker server.
 
-* Configuration
+## Home URL
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+http://localhost:3000/
