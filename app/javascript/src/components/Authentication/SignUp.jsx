@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
-import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
@@ -13,13 +12,17 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import CopyRight from "common/CopyRight";
 import NavBar from "common/NavBar";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import deviseApi from "apis/devise";
+import referralsApi from "apis/referrals";
 import { Alert } from "@mui/material";
 
 const SignUp = () => {
   const [formErrors, setFormErrors] = useState();
   const history = useHistory();
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const referrerId = searchParams.get("referrer_id");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -32,9 +35,13 @@ const SignUp = () => {
         first_name: data.get("firstName"),
         last_name: data.get("lastName")
       });
+      if (referrerId)
+        await referralsApi.update(referrerId, {
+          from_id: referrerId,
+          to: data.get("email")
+        });
       history.push("/users/sign_in");
     } catch (err) {
-      console.log(err);
       setFormErrors(err);
       logger.log(err);
     }
@@ -44,7 +51,6 @@ const SignUp = () => {
     <>
       <NavBar />
       <Container component="main" maxWidth="xs">
-        <CssBaseline />
         <Box
           sx={{
             marginTop: 8,
@@ -54,7 +60,7 @@ const SignUp = () => {
           }}
         >
           {formErrors && (
-            <Alert severity="error">
+            <Alert sx={{ mb: 2 }} severity="error">
               {Object.entries(formErrors?.response?.data?.errors).map(
                 ([key, val]) => (
                   <div>{`${key[0].toUpperCase()}${key.slice(1)} ${val}`}</div>

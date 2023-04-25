@@ -6,8 +6,16 @@ import SignUp from "components/Authentication/SignUp";
 import SignIn from "components/Authentication/SignIn";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import UserContext from "./contexts/UserContext";
-import NavBar from "./common/NavBar";
 import { Box, CircularProgress } from "@mui/material";
+import Home from "components/Home";
+import Refer from "components/Refer";
+import { ToastContainer } from "material-react-toastify";
+import "material-react-toastify/dist/ReactToastify.css";
+
+import "@fontsource/roboto/300.css";
+import "@fontsource/roboto/400.css";
+import "@fontsource/roboto/500.css";
+import "@fontsource/roboto/700.css";
 
 const App = (props) => {
   const [loading, setLoading] = useState(true);
@@ -28,24 +36,17 @@ const App = (props) => {
   }
 
   return (
-    <UserContext.Provider value={props?.authorized}>
+    <UserContext.Provider value={props?.current_user}>
       <ThemeProvider theme={theme}>
         <Router>
           <Switch>
-            <Route
-              exact
-              path="/"
-              render={() => (
-                <>
-                  <NavBar />
-                  <div>Home</div>
-                </>
-              )}
-            />
+            <Route exact path="/" component={Home} />
+            <Route exact path="/refer" component={Refer} />
             <Route exact path="/users/sign_up" component={SignUp} />
             <Route exact path="/users/sign_in" component={SignIn} />
           </Switch>
         </Router>
+        <ToastContainer />
       </ThemeProvider>
     </UserContext.Provider>
   );

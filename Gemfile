@@ -42,6 +42,8 @@ gem "bootsnap", require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
+
+  gem "byebug"
 end
 
 group :development do
@@ -53,10 +55,17 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+
+  gem "letter_opener"
 end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
+end
+
+group :development, :staging do
+  # Intercepts outgoing emails in non-production environment
+  gem "mail_interceptor"
 end
 
 # For compiling and bundling JavaScript. Read more: https://github.com/rails/webpacker

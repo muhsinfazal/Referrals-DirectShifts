@@ -24,7 +24,7 @@ const settings = ["Logout"];
 function NavBar() {
   const [anchorElNav, setAnchorElNav] = useState();
   const [anchorElUser, setAnchorElUser] = useState();
-  const isAuthorized = useContext(UserContext);
+  const currentUser = useContext(UserContext);
   const history = useHistory();
 
   const handleOpenNavMenu = (event) => {
@@ -75,7 +75,7 @@ function NavBar() {
             REFERRALS
           </Typography>
 
-          {isAuthorized && (
+          {currentUser && (
             <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
               <IconButton
                 size="large"
@@ -134,7 +134,7 @@ function NavBar() {
           >
             REFERRALS
           </Typography>
-          {isAuthorized && (
+          {currentUser && (
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
               {pages.map(({ label, path }) => (
                 <Button
@@ -148,7 +148,7 @@ function NavBar() {
             </Box>
           )}
 
-          {isAuthorized && (
+          {currentUser && (
             <Box sx={{ flexGrow: 0 }}>
               <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>

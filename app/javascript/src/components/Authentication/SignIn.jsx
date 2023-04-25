@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
-import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
@@ -15,8 +14,10 @@ import CopyRight from "common/CopyRight";
 import NavBar from "common/NavBar";
 import { useHistory } from "react-router-dom";
 import deviseApi from "apis/devise";
+import { Alert } from "@mui/material";
 
 const SignIn = () => {
+  const [formErrors, setFormErrors] = useState();
   const history = useHistory();
 
   const handleSubmit = async (event) => {
@@ -30,6 +31,7 @@ const SignIn = () => {
       });
       location.reload();
     } catch (err) {
+      setFormErrors(err);
       logger.log(err);
     }
   };
@@ -38,7 +40,6 @@ const SignIn = () => {
     <>
       <NavBar />
       <Container component="main" maxWidth="xs">
-        <CssBaseline />
         <Box
           sx={{
             marginTop: 8,
@@ -47,6 +48,11 @@ const SignIn = () => {
             alignItems: "center"
           }}
         >
+          {formErrors && (
+            <Alert sx={{ mb: 2 }} severity="error">
+              {formErrors?.response?.data?.error}
+            </Alert>
+          )}
           <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
             <LockOutlinedIcon />
           </Avatar>

@@ -1,5 +1,5 @@
 module ApplicationHelper
   def get_client_props
-    {authorized: current_user.present?}
+    { current_user: current_user }
   end
 end
