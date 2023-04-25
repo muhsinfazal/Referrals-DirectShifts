@@ -20,6 +20,8 @@ FileUtils.chdir APP_ROOT do
   puts "\n== Executing yarn =="
   system!("bin/yarn")
 
+  system!("bundle exec rails assets:precompile")
+
   # puts "\n== Copying sample files =="
   # unless File.exist?("config/database.yml")
   #   FileUtils.cp "config/database.yml.sample", "config/database.yml"
